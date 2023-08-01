@@ -1,0 +1,19 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - my_network
+  app:
+    build: .
+    ports:
+      - "1234:1234"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
